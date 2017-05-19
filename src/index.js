@@ -12,4 +12,18 @@ class Editor extends React.Component {
   }
 }
 
-ReactDOM.render(<Editor />, document.getElementById('root'));
+class Preview extends React.Component {
+  render() {
+    return (
+      <div className="preview">
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <div className="container">
+    <Editor />
+    <Preview />
+  </div>,
+  document.getElementById('root'));
