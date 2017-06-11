@@ -14,7 +14,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <Editor />
+        <Editor onKeyPress={updateAndParse}/>
         <Preview />
       </div>
     );
@@ -25,7 +25,7 @@ class Editor extends React.Component {
   render() {
     return (
       <form>
-        <textarea rows="30" cols="70" placeholder="Type Markdown here!" onKeyPress={(e) => {console.log(e.target.value)}}/>
+        <textarea rows="30" cols="70" placeholder="Type Markdown here!"/>
       </form>
     );
   }
