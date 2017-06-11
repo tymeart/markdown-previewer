@@ -6,9 +6,13 @@ import './index.css';
 class Container extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      markdown: ''
-    };
+    this.state = {markdown: ''};
+    this.updateAndParse = this.updateAndParse.bind(this);
+  }
+
+  function updateAndParse(e) {
+    this.setState({markdown: `${this.e.target.value}`});
+    return marked(this.state.markdown);
   }
 
   render() {
