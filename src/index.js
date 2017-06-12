@@ -10,9 +10,10 @@ class Container extends React.Component {
     this.updateAndParse = this.updateAndParse.bind(this);
   }
 
-  function updateAndParse(e) {
-    this.setState({markdown: `${this.e.target.value}`});
-    return marked(this.state.markdown);
+  updateAndParse(e) {
+    // this.setState({markdown: `${e.target.value}`});
+    // return marked(this.state.markdown);
+    console.log(e.target.value);
   }
 
   render() {
