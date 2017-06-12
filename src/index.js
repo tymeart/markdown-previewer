@@ -19,7 +19,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <Editor onKeyPress={updateAndParse}/>
+        <Editor onKeyPress={this.updateAndParse}/>
         <Preview />
       </div>
     );
