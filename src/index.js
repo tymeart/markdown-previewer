@@ -7,11 +7,11 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {markdown: ''};
-    this.updateAndParse = this.updateAndParse.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
-  updateAndParse(e) {
-    // this.setState({markdown: `${e.target.value}`});
+  onInputChange(e) {
+    // this.setState({markdown: e.target.value});
     // return marked(this.state.markdown);
     console.log(e.target.value);
   }
@@ -19,7 +19,7 @@ class Container extends React.Component {
   render() {
     return (
       <div className="container">
-        <Editor onKeyPress={this.updateAndParse}/>
+        <Editor onChange={this.onInputChange}/>
         <Preview />
       </div>
     );
