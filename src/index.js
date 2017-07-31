@@ -12,10 +12,15 @@ class App extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleInput = (e) => {
+  handleInput(e) {
     this.setState({
-      output: marked(e.target.value)
+      output: e.target.value
     });
+  }
+
+  convertText() {
+    let rawMarkup = marked(this.state.output, {sanitize: true});
+    return {__html: rawMarkup};
   }
 
   render() {
@@ -25,9 +30,7 @@ class App extends React.Component {
           <textarea rows="30" cols="70" placeholder="Type Markdown here!" onChange={this.handleInput}/>
         </form>
 
-        <div className="preview">
-          {this.state.output}
-        </div>
+        <div className="preview" dangerouslySetInnerHTML={this.convertText()}/>
       </div>
     );
   }
