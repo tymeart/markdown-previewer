@@ -3,49 +3,36 @@ import ReactDOM from 'react-dom';
 import marked from 'marked';
 import './index.css';
 
-class Container extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {markdown: ''};
-    this.onInputChange = this.onInputChange.bind(this);
+    this.state = {
+      output: ''
+    };
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  onInputChange(e) {
-    // this.setState({markdown: e.target.value});
-    // return marked(this.state.markdown);
-    console.log(e.target.value);
+  handleInput = (e) => {
+    this.setState({
+      output: marked(e.target.value)
+    });
   }
 
   render() {
     return (
       <div className="container">
-        <Editor onChange={this.onInputChange}/>
-        <Preview />
-      </div>
-    );
-  }
-}
+        <form>
+          <textarea rows="30" cols="70" placeholder="Type Markdown here!" onChange={this.handleInput}/>
+        </form>
 
-class Editor extends React.Component {
-  render() {
-    return (
-      <form>
-        <textarea rows="30" cols="70" placeholder="Type Markdown here!"/>
-      </form>
-    );
-  }
-}
-
-class Preview extends React.Component {
-  render() {
-    return (
-      <div className="preview">
-       <p></p>
+        <div className="preview">
+          {this.state.output}
+        </div>
       </div>
     );
   }
 }
 
 ReactDOM.render(
-  <Container />,
+  <App />,
   document.getElementById('root'));
