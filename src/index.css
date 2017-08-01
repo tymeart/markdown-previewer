@@ -1,9 +1,11 @@
 body {
+  color: #31193F;
   margin: 0;
   font-family: sans-serif;
 }
 
 .heading {
+  color: #9255BA;
   margin-left: 35px;
 }
 
@@ -16,14 +18,25 @@ body {
 }
 
 textarea {
+  border: 1px solid #B2A1BD;
   font-size: 16px;
   padding: 10px;
   width: 570px;
   height: 530px;
 }
 
+textarea::placeholder {
+  color: #6A4D7C;
+}
+
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px #DA84E5;
+  border: 1px solid #DA84E5;
+}
+
 .preview {
-  border: 1px solid blue;
+  border: 1px solid #9255BA;
   overflow: auto;
   padding: 10px;
   width: 570px;
