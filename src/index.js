@@ -7,31 +7,64 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      output: ''
+      input: ''
     };
     this.handleInput = this.handleInput.bind(this);
+    this.convertText = this.convertText.bind(this);
   }
 
   handleInput(e) {
     this.setState({
-      output: e.target.value
+      input: e.target.value
     });
   }
 
   convertText() {
-    let rawMarkup = marked(this.state.output, {sanitize: true});
+    let rawMarkup = marked(this.state.input, {sanitize: true});
     return {__html: rawMarkup};
   }
 
   render() {
     return (
-      <div className="container">
-        <form>
-          <textarea rows="30" cols="70" placeholder="Type Markdown here!" onChange={this.handleInput}/>
-        </form>
-
-        <div className="preview" dangerouslySetInnerHTML={this.convertText()}/>
+      <div>
+        <Header />
+        <div className="container">
+          <Editor input={this.state.input} handleInput={this.handleInput}/>
+          <Preview convertText={this.convertText}/>
+        </div>
       </div>
+    );
+  }
+}
+
+const Header = () => {
+  return (
+    <h1 className="heading">Markdown Previewer</h1>
+  );
+}
+
+class Editor extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <form>
+        <textarea rows="30" cols="70" placeholder="Type Markdown here!" onChange={this.props.handleInput} value={this.props.input} />
+      </form>
+    );
+  }
+}
+
+class Preview extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="preview" dangerouslySetInnerHTML={this.props.convertText()} />
     );
   }
 }
