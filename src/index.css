@@ -59,6 +59,11 @@ textarea:focus {
   margin-top: 0;
 }
 
+.preview code {
+  background-color: #C9B9D4;
+  padding: 2px;
+}
+
 @media screen and (max-width: 920px) {
   .container {
     -webkit-box-orient: vertical;
