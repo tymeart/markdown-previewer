@@ -44,10 +44,6 @@ const Header = () => {
 }
 
 class Editor extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <form>
@@ -58,10 +54,6 @@ class Editor extends React.Component {
 }
 
 class Preview extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="preview" dangerouslySetInnerHTML={this.props.convertText()} />
